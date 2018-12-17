@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-masterBranch="master"
+masterBranch="develop"
 
 ((!$#)) && echo No feature name, command ignored! && echo "  - git feature <name>" && exit 1
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-masterBranch="master"
+masterBranch="develop"
 
 ((!$#)) && echo No release name, command ignored! && echo "  - git release <version> <startingPoint>" && exit 1
 

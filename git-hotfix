@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-masterBranch="master"
+masterBranch="develop"
 
 ((!$#)) && echo No hotfix name, command ignored! && echo "  - git hotfix <version> <tag>" && exit 1
 
@@ -32,7 +32,7 @@ if [ "$2" = "" ]; then
 	head=$(git describe --tags `git rev-list --tags --max-count=1`)
 	echo branching from latest tag: $head
 else
-	head=$2
+	head=V$2
 	echo branching from requested cs: $head
 fi
 

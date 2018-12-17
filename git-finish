@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
-masterBranch="master"
+masterBranch="develop"
+latestReleaseBranch="master"
 
 if [[ "$1" = "--h" ]] ; then
    echo "Finishing up feature and issue branches: ";
@@ -97,6 +98,11 @@ elif [[ $branch =~ ^(release|hotfix).* ]]; then
 	else
 		git tag -a V$shortBranch -m "$1"
 	fi	
+
+    echo Fast-forwarding $latestReleaseBranch to latest tag
+    git checkout $latestReleaseBranch
+    git merge --ff-only V$shortBranch
+    git push origin $latestReleaseBranch
 else 
 	echo "Currently not on a feature/issue/release/hotfix branch";
 	exit 1;
